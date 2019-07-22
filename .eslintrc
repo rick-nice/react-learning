@@ -2,7 +2,7 @@
   "extends": [
     "react-app",
     "prettier",
-    "airbnb-base"
+    "airbnb"
   ],
   "rules": {
     "jsx-quotes": [
@@ -10,14 +10,7 @@
       "prefer-double"
     ],
     "prettier/prettier": ["error"],
-    "semi": 0,
-    "comma-dangle": ["error", {
-      "arrays": "always",
-      "objects": "always",
-      "imports": "never",
-      "exports": "never",
-      "functions": "never"
-  }]
+    "semi": 0,     
   },
   "plugins": [
     "prettier"

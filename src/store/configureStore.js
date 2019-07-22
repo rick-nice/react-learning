@@ -1,5 +1,10 @@
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
+// eslint-disable-next-line import/no-extraneous-dependencies
+import logger from 'redux-logger'
+import thunk from 'redux-thunk'
 
-const store = createStore(() => {}, {})
+import rootReducer from '../reducers'
+
+const store = createStore(rootReducer, applyMiddleware(thunk, logger))
 
 export default store
