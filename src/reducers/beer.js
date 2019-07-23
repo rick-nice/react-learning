@@ -1,5 +1,5 @@
 const initialState = {
-  beer: {},
+  beer: [],
   id: 'random',
   isFetching: false,
 }

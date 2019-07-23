@@ -18,7 +18,7 @@ const BeerCard = ({ id, img, title, setFavorite }) => {
 }
 
 BeerCard.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   setFavorite: PropTypes.func.isRequired,

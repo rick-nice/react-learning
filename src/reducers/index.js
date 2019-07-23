@@ -4,7 +4,7 @@ import beerReducer from './beer'
 
 const rootReducer = combineReducers({
   favorites: favoriteReducer,
-  beer: beerReducer,
+  beers: beerReducer,
 })
 
 export default rootReducer
