@@ -6,8 +6,7 @@ export function setFavorite(id) {
 }
 
 export function getRandomBeer(id) {
-  // eslint-disable-next-line arrow-parens
-  return async dispatch => {
+  return async (dispatch) => {
     dispatch({
       type: 'GET_SOME_BEER',
       payload: id,

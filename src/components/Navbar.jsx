@@ -20,8 +20,6 @@ const Navbar = ({ getRandomBeer }) => {
   )
 }
 
-Navbar.propTypes = {
-  getRandomBeer: PropTypes.func.isRequired,
-}
+Navbar.propTypes = { getRandomBeer: PropTypes.func.isRequired }
 
 export default Navbar

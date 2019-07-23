@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 
 const { Meta } = Card
 
-// eslint-disable-next-line object-curly-newline
 const BeerCard = ({ id, img, title, setFavorite }) => {
   const onBtnClick = () => setFavorite(id)
   return (

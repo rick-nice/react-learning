@@ -20,17 +20,14 @@ class App extends Component() {
   }
 }
 
-const mapStateToProps = store => ({
-  favorites: store.favorites,
-})
+const mapStateToProps = (store) => ({ favorites: store.favorites })
 
-const mapDispatchToProps = dispatch => ({
-  setFavAction: id => dispatch(setFavorite(id)),
-  setBeerAction: id => dispatch(getRandomBeer(id)),
+const mapDispatchToProps = (dispatch) => ({
+  setFavAction: (id) => dispatch(setFavorite(id)),
+  setBeerAction: (id) => dispatch(getRandomBeer(id)),
 })
 
 export default connect(
   mapStateToProps,
-  // eslint-disable-next-line comma-dangle
   mapDispatchToProps
 )(App)
