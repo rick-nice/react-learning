@@ -33,10 +33,12 @@ App.propTypes = {
   setBeerAction: PropTypes.func.isRequired,
 }
 
+
 const mapStateToProps = (store) => ({
   favorites: store.favorites,
   beers: store.beers,
 })
+
 
 const mapDispatchToProps = (dispatch) => ({
   setFavAction: (id) => dispatch(setFavorite(id)),
