@@ -14,10 +14,10 @@ export function getRandomBeer(id) {
 
     try {
       const response = await fetch(`https://api.punkapi.com/v2/beers/${id}`)
-      const beer = await response.json()
+      const beers = await response.json()
       dispatch({
         type: 'GET_BEER_SUCCESS',
-        payload: beer,
+        payload: beers,
       })
     } catch (err) {
       dispatch({

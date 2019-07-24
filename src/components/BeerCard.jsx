@@ -4,7 +4,13 @@ import PropTypes from 'prop-types'
 
 const { Meta } = Card
 
-const BeerCard = ({ id, img, title, setFavorite }) => {
+const BeerCard = ({
+  id = 'random',
+  img,
+  title,
+  description = 'loading',
+  setFavorite,
+}) => {
   const onBtnClick = () => setFavorite(id)
   return (
     <Card
@@ -12,7 +18,7 @@ const BeerCard = ({ id, img, title, setFavorite }) => {
       cover={<img alt="beerImg" src={img} />}
       actions={<Icon type="heart" onClick={onBtnClick} />}
     >
-      <Meta title={title} description="This is the description" />
+      <Meta title={title} description={description} />
     </Card>
   )
 }
@@ -22,6 +28,7 @@ BeerCard.propTypes = {
   img: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   setFavorite: PropTypes.func.isRequired,
+  description: PropTypes.string.isRequired,
 }
 
 export default BeerCard
