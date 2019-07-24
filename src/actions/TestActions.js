@@ -5,15 +5,12 @@ export function setFavorite(id) {
   }
 }
 
-export function getRandomBeer(id) {
+export function getRandomBeer() {
   return async (dispatch) => {
-    dispatch({
-      type: 'GET_SOME_BEER',
-      payload: id,
-    })
+    dispatch({ type: 'GET_SOME_BEER' })
 
     try {
-      const response = await fetch(`https://api.punkapi.com/v2/beers/${id}`)
+      const response = await fetch('https://api.punkapi.com/v2/beers/random')
       const beers = await response.json()
       dispatch({
         type: 'GET_BEER_SUCCESS',

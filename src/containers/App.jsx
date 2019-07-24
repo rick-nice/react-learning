@@ -11,7 +11,6 @@ import './App.css'
 
 const App = (props) => {
   const { setFavAction, setBeerAction, beerList } = props
-  console.log('render')
   return (
     <Layout>
       <Navbar getRandomBeer={setBeerAction} />
@@ -22,7 +21,6 @@ const App = (props) => {
 
 App.propTypes = {
   beerList: PropTypes.shape({
-    id: PropTypes.string.isRequired,
     isFetching: PropTypes.bool.isRequired,
     beers: PropTypes.array.isRequired,
   }).isRequired,
@@ -39,7 +37,7 @@ const mapStateToProps = (store) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   setFavAction: (id) => dispatch(setFavorite(id)),
-  setBeerAction: (id) => dispatch(getRandomBeer(id)),
+  setBeerAction: () => dispatch(getRandomBeer()),
 })
 
 export default connect(

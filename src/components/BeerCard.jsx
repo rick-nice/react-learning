@@ -4,19 +4,13 @@ import PropTypes from 'prop-types'
 
 const { Meta } = Card
 
-const BeerCard = ({
-  id = 'random',
-  img,
-  title,
-  description = 'loading',
-  setFavorite,
-}) => {
+const BeerCard = ({ id, img, title, description, setFavorite }) => {
   const onBtnClick = () => setFavorite(id)
   return (
     <Card
-      style={{ width: 300 }}
-      cover={<img alt="beerImg" src={img} />}
-      actions={<Icon type="heart" onClick={onBtnClick} />}
+      style={{ width: 300, heigth: 400 }}
+      cover={<img alt="beerImg" src={img} heigth={400} />}
+      actions={[<Icon type="heart" onClick={onBtnClick} />]}
     >
       <Meta title={title} description={description} />
     </Card>
@@ -24,7 +18,7 @@ const BeerCard = ({
 }
 
 BeerCard.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   img: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   setFavorite: PropTypes.func.isRequired,

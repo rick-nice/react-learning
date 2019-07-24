@@ -3,9 +3,8 @@ import { List } from 'antd'
 import PropTypes from 'prop-types'
 
 import BeerCard from './BeerCard'
-import loadingImg from '../images/beer.svg'
 
-const BeerList = ({ beers, setFavorite }) => (
+const BeerList = ({ data, setFavorite }) => (
   <List
     grid={{
       gutter: 16,
@@ -16,13 +15,13 @@ const BeerList = ({ beers, setFavorite }) => (
       xl: 6,
       xxl: 3,
     }}
-    dataSource={beers}
+    dataSource={data.beers}
     renderItem={(item) => (
       <List.Item>
         <BeerCard
           description={item.description}
-          title={item.title}
-          img={item.img}
+          title={item.name}
+          img={item.image_url}
           setFavorite={setFavorite}
           id={item.id}
         />
@@ -31,19 +30,11 @@ const BeerList = ({ beers, setFavorite }) => (
   />
 )
 
-BeerList.defaultProps = {
-  beers: [
-    { title: 'Loading', img: loadingImg, id: 'random', description: 'loading' },
-  ],
-}
-
 BeerList.propTypes = {
-  beers: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      img: PropTypes.string.isRequired,
-    })
-  ),
+  data: PropTypes.shape({
+    isFetching: PropTypes.bool.isRequired,
+    beers: PropTypes.array.isRequired,
+  }).isRequired,
   setFavorite: PropTypes.func.isRequired,
 }
 
