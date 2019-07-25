@@ -6,13 +6,13 @@ import './Navbar.css'
 
 const { Header } = Layout
 
-const Navbar = ({ getRandomBeer }) => {
-  const onBtnClick = () => getRandomBeer('random')
+const NavbarComponent = ({ getRandomBeer }) => {
+  const onBtnClick = () => getRandomBeer()
   return (
     <Header>
       <div className="logo" />
       <Menu theme="dark" mode="horizontal" style={{ lineHeight: '64px' }}>
-        <Menu.Item key="random">
+        <Menu.Item>
           <Button onClick={onBtnClick}>Random</Button>
         </Menu.Item>
       </Menu>
@@ -20,6 +20,6 @@ const Navbar = ({ getRandomBeer }) => {
   )
 }
 
-Navbar.propTypes = { getRandomBeer: PropTypes.func.isRequired }
+NavbarComponent.propTypes = { getRandomBeer: PropTypes.func.isRequired }
 
-export default Navbar
+export default NavbarComponent

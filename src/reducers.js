@@ -1,10 +1,11 @@
 import { combineReducers } from 'redux'
-import favoriteReducer from './favorites'
-import beerReducer from './beerList'
+
+import favoriteReducer from './app/duck/reducers'
+import beerReducer from './app/home/duck/reducers'
 
 const rootReducer = combineReducers({
   favorites: favoriteReducer,
-  beerList: beerReducer,
+  beers: beerReducer,
 })
 
 export default rootReducer

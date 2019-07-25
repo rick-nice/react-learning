@@ -11,6 +11,7 @@
     ],
     "prettier/prettier": ["error"],
     "semi": 0,
+    "max-len": ["error", { "code": 80 }],
     "comma-dangle": [2, {
       "arrays": "always-multiline",
       "objects": "always-multiline",
@@ -18,14 +19,10 @@
       "exports": "always-multiline",
       "functions": "never"
     }],
-    "object-curly-newline": ["error", {
-      "ObjectExpression": { "multiline": true },
-      "ObjectPattern": { "multiline": true },
-      "ImportDeclaration": "never",
-      "ExportDeclaration": { "multiline": true, "minProperties": 3 }
-    }],
+    "object-curly-newline": [0],
     "arrow-parens": ["error", "always"],
-    "react/jsx-one-expression-per-line": ["error", { "allow": "literal" }]    
+    "react/jsx-one-expression-per-line": ["error", { "allow": "literal" }],
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
   },
   "plugins": [
     "prettier"
