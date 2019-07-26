@@ -1,8 +1,13 @@
-{
+{ "env": {
+      "browser": true,
+      
+  },
+  
   "extends": [
     "prettier",
     "airbnb"
   ],
+
   "rules": {
     "jsx-quotes": [
       1,
@@ -21,6 +26,7 @@
     "arrow-parens": ["error", "always"],
     "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
   },
+  
   "plugins": [
     "prettier"
   ]
