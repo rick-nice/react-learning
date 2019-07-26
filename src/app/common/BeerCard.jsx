@@ -13,8 +13,8 @@ const BeerCard = ({ id, img, name, description, setFavorite }) => {
   return (
     <Card
       style={{ width: 300, heigth: 400 }}
-      cover={<img alt="beerImg" src={img || beerImg} heigth={400} />}
-      actions={[<Icon type="heart" onClick={onBtnClick} />]}
+      cover={<img alt='beerImg' src={img || beerImg} heigth={400} />}
+      actions={[<Icon type='heart' onClick={onBtnClick} />]}
     >
       <Meta title={name} description={description} />
     </Card>

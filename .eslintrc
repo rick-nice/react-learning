@@ -1,17 +1,15 @@
 {
   "extends": [
-    "react-app",
     "prettier",
     "airbnb"
   ],
   "rules": {
     "jsx-quotes": [
       1,
-      "prefer-double"
+      "prefer-single"
     ],
     "prettier/prettier": ["error"],
-    "semi": 0,
-    "max-len": ["error", { "code": 80 }],
+    "semi": 0,    
     "comma-dangle": [2, {
       "arrays": "always-multiline",
       "objects": "always-multiline",
@@ -21,7 +19,6 @@
     }],
     "object-curly-newline": [0],
     "arrow-parens": ["error", "always"],
-    "react/jsx-one-expression-per-line": ["error", { "allow": "literal" }],
     "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
   },
   "plugins": [
