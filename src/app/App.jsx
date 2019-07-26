@@ -1,18 +1,16 @@
 import React from 'react'
-import { Layout } from 'antd'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Navbar from './common/NavbarContainer'
-import BeerList from './home/BeerListContainer'
-
-const { Content } = Layout
+import HomeComponent from './home/HomeComponent'
 
 const App = () => (
-  <Layout>
+  <Router>
     <Navbar />
-    <Content>
-      <BeerList />
-    </Content>
-  </Layout>
+    <Switch>
+      <Route exact path="/" component={HomeComponent} />
+    </Switch>
+  </Router>
 )
 
 export default App
