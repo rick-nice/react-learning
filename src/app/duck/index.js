@@ -1,5 +1,5 @@
 import * as TYPES from './types'
 import favoriteReducer from './reducers'
-import setFavoriteAction from './operations'
+import setFavorite from './actions'
 
-export { TYPES, favoriteReducer, setFavoriteAction }
+export { TYPES, favoriteReducer, setFavorite }

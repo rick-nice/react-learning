@@ -1,16 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Menu, Layout, Button } from 'antd'
+import { Menu, Button } from 'antd'
 import PropTypes from 'prop-types'
 
-import './Navbar.css'
+import './NavBar.css'
 
-const { Header } = Layout
-
-const NavbarComponent = ({ getRandomBeer }) => {
+const NavBarPure = ({ getRandomBeer }) => {
   const onBtnClick = () => getRandomBeer()
+
   return (
-    <Header>
+    <div>
       <div className='logo'>
         <Link to='/'>Beer</Link>
       </div>
@@ -19,10 +18,10 @@ const NavbarComponent = ({ getRandomBeer }) => {
           <Button onClick={onBtnClick}>Random</Button>
         </Menu.Item>
       </Menu>
-    </Header>
+    </div>
   )
 }
 
-NavbarComponent.propTypes = { getRandomBeer: PropTypes.func.isRequired }
+NavBarPure.propTypes = { getRandomBeer: PropTypes.func.isRequired }
 
-export default NavbarComponent
+export default NavBarPure

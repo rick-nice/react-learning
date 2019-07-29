@@ -1,15 +1,22 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { Layout } from 'antd'
 
-import Navbar from './common/NavbarContainer'
-import HomeComponent from './home/HomeComponent'
+import { NavBar } from './common'
+import { Home } from './pages'
+
+const { Header } = Layout
 
 const App = () => (
   <Router>
-    <Navbar />
-    <Switch>
-      <Route exact path='/' component={HomeComponent} />
-    </Switch>
+    <Layout>
+      <Header>
+        <NavBar />
+      </Header>
+      <Switch>
+        <Route exact path='/' component={Home} />
+      </Switch>
+    </Layout>
   </Router>
 )
 

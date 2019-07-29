@@ -5,9 +5,10 @@ import { createStore, applyMiddleware } from 'redux'
 import logger from 'redux-logger'
 import thunk from 'redux-thunk'
 
-import App from './app/App'
 import * as serviceWorker from './serviceWorker'
-import rootReducer from './reducers'
+
+import App from './app/App'
+import rootReducer from './app/reducers'
 
 import './index.css'
 

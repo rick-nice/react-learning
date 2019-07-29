@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 
-import favoriteReducer from './app/duck/reducers'
-import beerReducer from './app/home/duck/reducers'
+import { favoriteReducer } from './duck'
+import { beerReducer } from './pages/Home/duck'
 
 const rootReducer = combineReducers({
   favorites: favoriteReducer,
