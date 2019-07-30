@@ -1,10 +1,21 @@
 import React from 'react'
 import { List } from 'antd'
-import PropTypes from 'prop-types'
 
 import { BeerCard } from '..'
 
-const BeerListPure = ({ beers, setFavorite }) => (
+interface Props {
+  beers: any
+  setFavorite: (id: number) => void
+}
+
+interface ListProps {
+  id: number
+  name: string
+  description: string
+  image_url?: string
+}
+
+const BeerListPure = ({ beers, setFavorite }: Props) => (
   <List
     grid={{
       gutter: 16,
@@ -16,7 +27,7 @@ const BeerListPure = ({ beers, setFavorite }) => (
       xxl: 3,
     }}
     dataSource={beers.list}
-    renderItem={({ description, id, name, image_url: img }) => (
+    renderItem={({ description, id, name, image_url: img }: ListProps) => (
       <List.Item key={id}>
         <BeerCard
           description={description}
@@ -29,12 +40,5 @@ const BeerListPure = ({ beers, setFavorite }) => (
     )}
   />
 )
-
-BeerListPure.propTypes = {
-  beers: PropTypes.shape({
-    list: PropTypes.array.isRequired,
-  }).isRequired,
-  setFavorite: PropTypes.func.isRequired,
-}
 
 export default BeerListPure

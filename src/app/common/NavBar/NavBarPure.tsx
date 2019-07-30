@@ -1,11 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Menu, Button } from 'antd'
-import PropTypes from 'prop-types'
 
 import './NavBar.css'
 
-const NavBarPure = ({ getRandomBeer }) => {
+export interface Props {
+  getRandomBeer: () => void
+}
+
+const NavBarPure = ({ getRandomBeer }: Props) => {
   const onBtnClick = () => getRandomBeer()
 
   return (
@@ -21,7 +24,5 @@ const NavBarPure = ({ getRandomBeer }) => {
     </div>
   )
 }
-
-NavBarPure.propTypes = { getRandomBeer: PropTypes.func.isRequired }
 
 export default NavBarPure
