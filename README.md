@@ -1,1 +1,1 @@
-# react-learning
+Learning React/Redux in Beer app.
