@@ -1,12 +1,12 @@
 import { SET_FAVORITE } from './types'
-import { SetFavorite } from './actions'
+import { Action } from './actions'
 
-const initialState: Array<number> = []
+const initialState: number[] = []
 
 export default function favoriteReducer(
-  state: Array<number> = initialState,
-  action: SetFavorite
-): Array<number> {
+  state: number[] = initialState,
+  action: Action
+): number[] {
   switch (action.type) {
     case SET_FAVORITE:
       return [...state, action.payload]

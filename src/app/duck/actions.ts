@@ -1,13 +1,13 @@
 import { SET_FAVORITE } from './types'
 
-export interface SetFavorite {
+export interface ISetFavorite {
   type: SET_FAVORITE
   payload: number
 }
 
-const setFavorite = (id: number): SetFavorite => ({
+export const setFavorite = (id: number): ISetFavorite => ({
   type: SET_FAVORITE,
   payload: id,
 })
 
-export default setFavorite
+export type Action = ISetFavorite

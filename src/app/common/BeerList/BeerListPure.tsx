@@ -1,21 +1,19 @@
 import React from 'react'
 import { List } from 'antd'
 
-import { BeerCard } from '..'
+import { IBeerShort } from '../../types'
+import BeerCard from '../BeerCard'
 
-interface Props {
-  beers: any
+interface IProps {
+  beers: IList
   setFavorite: (id: number) => void
 }
 
-interface ListProps {
-  id: number
-  name: string
-  description: string
-  image_url?: string
+interface IList {
+  list: IBeerShort[]
 }
 
-const BeerListPure = ({ beers, setFavorite }: Props) => (
+const BeerListPure = ({ beers, setFavorite }: IProps) => (
   <List
     grid={{
       gutter: 16,
@@ -27,7 +25,7 @@ const BeerListPure = ({ beers, setFavorite }: Props) => (
       xxl: 3,
     }}
     dataSource={beers.list}
-    renderItem={({ description, id, name, image_url: img }: ListProps) => (
+    renderItem={({ description, id, name, image_url: img }: IBeerShort) => (
       <List.Item key={id}>
         <BeerCard
           description={description}

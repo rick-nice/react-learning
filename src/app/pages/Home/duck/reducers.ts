@@ -1,12 +1,17 @@
 import * as types from './types'
-import { SuccessReceiveBeer } from './actions'
+import { IBeer } from '../../../types'
+import { Action } from './actions'
+
+export interface IBeerState {
+  list: IBeer[]
+}
 
 const initialState = { list: [] }
 
-export default function beerReducer(
-  state: types.StoreState = initialState,
-  action: SuccessReceiveBeer
-): types.StoreState {
+export function beerReducer(
+  state: IBeerState = initialState,
+  action: Action
+): IBeerState {
   switch (action.type) {
     case types.RECEIVE_BEER_SUCCESS:
       return { ...state, list: action.payload }

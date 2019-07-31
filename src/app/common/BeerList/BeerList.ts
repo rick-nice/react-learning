@@ -1,10 +1,12 @@
 import { connect } from 'react-redux'
 
 import BeerList from './BeerListPure'
-import { setFavorite } from '../../duck'
-import { StoreState } from '../../reducers'
+import { actions } from '../../duck'
+import { IStoreState } from '../../reducers'
 
-const mapStateToProps = (store: StoreState) => ({ beers: store.beers })
+const { setFavorite } = actions
+
+const mapStateToProps = (store: IStoreState) => ({ beers: store.beers })
 
 const mapDispatchToProps = { setFavorite }
 

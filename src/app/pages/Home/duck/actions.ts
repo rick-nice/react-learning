@@ -1,26 +1,25 @@
 import * as types from './types'
+import { IBeer } from '../../../types'
 
-export interface SuccessReceiveBeer {
+export interface ISuccessReceiveBeer {
   type: types.RECEIVE_BEER_SUCCESS
-  payload: Array<object>
+  payload: IBeer[]
 }
 
-export interface FailureReceiveBeer {
+export interface IFailureReceiveBeer {
   type: types.RECEIVE_BEER_FAILURE
   payload: object
   error: boolean
 }
 
-export type Action = SuccessReceiveBeer | FailureReceiveBeer
+export type Action = ISuccessReceiveBeer | IFailureReceiveBeer
 
-export const successReceiveBeer = (
-  beers: Array<object>
-): SuccessReceiveBeer => ({
+export const successReceiveBeer = (beers: IBeer[]): ISuccessReceiveBeer => ({
   type: types.RECEIVE_BEER_SUCCESS,
   payload: beers,
 })
 
-export const failureReceiveBeer = (err: object): FailureReceiveBeer => ({
+export const failureReceiveBeer = (err: object): IFailureReceiveBeer => ({
   type: types.RECEIVE_BEER_FAILURE,
   payload: err,
   error: true,

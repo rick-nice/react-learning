@@ -4,11 +4,11 @@ import { Menu, Button } from 'antd'
 
 import './NavBar.css'
 
-export interface Props {
+interface IProps {
   getRandomBeer: () => void
 }
 
-const NavBarPure = ({ getRandomBeer }: Props) => {
+const NavBarPure = ({ getRandomBeer }: IProps) => {
   const onBtnClick = () => getRandomBeer()
 
   return (

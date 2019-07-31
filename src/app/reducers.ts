@@ -1,16 +1,16 @@
 import { combineReducers } from 'redux'
 
 import { favoriteReducer } from './duck'
-import { beerReducer, types } from './pages/Home/duck'
+import { reducers } from './pages/Home/duck'
 
-export interface StoreState {
-  favorites: Array<number>
-  beers: types.StoreState
+export interface IStoreState {
+  favorites: number[]
+  beers: reducers.IBeerState
 }
 
-const rootReducer = combineReducers<StoreState>({
+const rootReducer = combineReducers<IStoreState>({
+  beers: reducers.beerReducer,
   favorites: favoriteReducer,
-  beers: beerReducer,
 })
 
 export default rootReducer
