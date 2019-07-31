@@ -12,7 +12,7 @@ export interface IFailureReceiveBeer {
   error: boolean
 }
 
-export type Action = ISuccessReceiveBeer | IFailureReceiveBeer
+export type BeerAction = ISuccessReceiveBeer | IFailureReceiveBeer
 
 export const successReceiveBeer = (beers: IBeer[]): ISuccessReceiveBeer => ({
   type: types.RECEIVE_BEER_SUCCESS,
