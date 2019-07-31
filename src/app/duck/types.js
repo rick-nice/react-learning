@@ -1,2 +1,0 @@
-export const SET_FAVORITE = 'SET_FAVORITE'
-export const UNSET_FAVORITE = 'UNSET_FAVORITE'

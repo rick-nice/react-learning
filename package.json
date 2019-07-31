@@ -3,17 +3,25 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "eslint-config-airbnb": "^17.1.1",
-    "eslint-config-prettier": "^6.0.0",
-    "eslint-plugin-prettier": "^3.1.0",
+    "@types/jest": "^24.0.16",
+    "@types/node": "^12.6.8",
+    "@types/react": "^16.8.23",
+    "@types/react-dom": "^16.8.5",
+    "@types/react-redux": "^7.1.1",
+    "@types/react-router-dom": "^4.3.4",
+    "@types/redux-logger": "^3.0.7",
     "husky": "^3.0.1",
     "lint-staged": "^9.2.0",
     "prettier": "^1.18.2",
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "tslint": "^5.18.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "tslint-react": "^4.0.0",
+    "typescript": "^3.5.3"
   },
   "dependencies": {
     "antd": "^3.20.5",
-    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",
@@ -27,12 +35,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "precommit": "lint-staged",
-    "eslint": "node_modules/.bin/eslint src/"
+    "precommit": "lint-staged"
   },
   "lint-staged": {
     "*.{js, jsx}": [
-      "node_modules/.bin/eslint",
       "prettier --write",
       "git add"
     ]
