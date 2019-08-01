@@ -4,7 +4,7 @@ import { Input, Select, Button } from 'antd'
 const { Group: InputGroup } = Input
 const { Option } = Select
 
-interface IProps {
+export interface ISearchProps {
   getSearchedBeers: (
     name: string,
     filterType: string,
@@ -12,16 +12,24 @@ interface IProps {
   ) => void
 }
 
-const SearchBar = ({ getSearchedBeers }: IProps) => {
+const OPTIONS = new Map([
+  ['ABV greater than', 'abv_gt'],
+  ['ABV less than', 'abv_lt'],
+  ['IBU greater than', 'ibu_gt'],
+  ['IBU less than', 'ibu_lt'],
+])
+
+const SearchBar = ({ getSearchedBeers }: ISearchProps) => {
   const [name, setName] = useState('')
   const [filterType, setFilterType] = useState('abv_gt')
   const [filterValue, setFilterValue] = useState(0)
+
   const onSearchClick = () => getSearchedBeers(name, filterType, filterValue)
 
   return (
     <InputGroup compact>
       <Input
-        style={{ width: '40%' }}
+        style={{ width: '20%' }}
         placeholder='input beer name'
         onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
       />
@@ -29,10 +37,11 @@ const SearchBar = ({ getSearchedBeers }: IProps) => {
         defaultValue={filterType}
         onChange={(value: string) => setFilterType(value)}
       >
-        <Option value='abv_gt'>ABV greater than</Option>
-        <Option value='abv_lt'>ABV less than</Option>
-        <Option value='ibu_gt'>IBU greater than</Option>
-        <Option value='ibu_lt'>IBU less than</Option>
+        {Array.from(OPTIONS).map(([key, value], index) => (
+          <Option key={index} value={value}>
+            {key}
+          </Option>
+        ))}
       </Select>
       <Input
         style={{ width: '10%' }}

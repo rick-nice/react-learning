@@ -4,7 +4,7 @@ import { List } from 'antd'
 import { IBeerShort } from '../../types'
 import BeerCard from '../BeerCard'
 
-interface IProps {
+export interface IBeerListProps {
   beers: IList
   setFavorite: (id: number) => void
 }
@@ -13,7 +13,7 @@ interface IList {
   list: IBeerShort[]
 }
 
-const BeerListPure = ({ beers, setFavorite }: IProps) => (
+const BeerListPure = ({ beers, setFavorite }: IBeerListProps) => (
   <List
     grid={{
       gutter: 16,
