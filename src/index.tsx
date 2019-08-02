@@ -9,10 +9,14 @@ import * as serviceWorker from './serviceWorker'
 
 import App from './app/App'
 import rootReducer from './app/reducers'
+import { favoritesToLS } from './app/middlewares'
 
 import './index.css'
 
-const store = createStore(rootReducer, applyMiddleware(thunk, logger))
+const store = createStore(
+  rootReducer,
+  applyMiddleware(thunk, favoritesToLS, logger)
+)
 
 ReactDOM.render(
   <Provider store={store}>

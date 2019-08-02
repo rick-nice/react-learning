@@ -4,7 +4,7 @@ import { favoriteReducer } from './duck'
 import { reducers } from './pages/Home/duck'
 
 export interface IStoreState {
-  favorites: number[]
+  favorites: Set<number>
   beers: reducers.IBeerState
 }
 
