@@ -13,7 +13,7 @@ interface IList {
   list: IBeerShort[]
 }
 
-const BeerListPure = ({ beers, setFavorite }: IBeerListProps) => (
+const BeerList = ({ beers, setFavorite }: IBeerListProps) => (
   <List
     grid={{
       gutter: 16,
@@ -39,4 +39,4 @@ const BeerListPure = ({ beers, setFavorite }: IBeerListProps) => (
   />
 )
 
-export default BeerListPure
+export default BeerList

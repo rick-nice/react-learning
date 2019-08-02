@@ -1,6 +1,8 @@
 import React, { useState, ChangeEvent } from 'react'
 import { Input, Select, Button } from 'antd'
 
+import { OPTIONS, ABV_GREATER } from './constants'
+
 const { Group: InputGroup } = Input
 const { Option } = Select
 
@@ -12,19 +14,22 @@ export interface ISearchProps {
   ) => void
 }
 
-const OPTIONS = new Map([
-  ['ABV greater than', 'abv_gt'],
-  ['ABV less than', 'abv_lt'],
-  ['IBU greater than', 'ibu_gt'],
-  ['IBU less than', 'ibu_lt'],
-])
+interface setIsListEmpty {
+  setIsListEmpty: (isEmpty: boolean) => void
+}
 
-const SearchBar = ({ getSearchedBeers }: ISearchProps) => {
+const SearchBar = ({
+  getSearchedBeers,
+  setIsListEmpty,
+}: ISearchProps & setIsListEmpty) => {
   const [name, setName] = useState('')
-  const [filterType, setFilterType] = useState('abv_gt')
+  const [filterType, setFilterType] = useState(ABV_GREATER.type)
   const [filterValue, setFilterValue] = useState(0)
 
-  const onSearchClick = () => getSearchedBeers(name, filterType, filterValue)
+  const onSearchClick = () => {
+    getSearchedBeers(name, filterType, filterValue)
+    setIsListEmpty(false)
+  }
 
   return (
     <InputGroup compact>
@@ -37,9 +42,9 @@ const SearchBar = ({ getSearchedBeers }: ISearchProps) => {
         defaultValue={filterType}
         onChange={(value: string) => setFilterType(value)}
       >
-        {Array.from(OPTIONS).map(([key, value], index) => (
-          <Option key={index} value={value}>
-            {key}
+        {OPTIONS.map(({ type, title }, index) => (
+          <Option key={index} value={type}>
+            {title}
           </Option>
         ))}
       </Select>
