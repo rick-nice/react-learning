@@ -1,4 +1,4 @@
-import { SET_FAVORITE } from './types'
+import { SET_FAVORITE, GET_DATA } from './types'
 
 export interface ISetFavorite {
   type: SET_FAVORITE
@@ -10,4 +10,14 @@ export const setFavorite = (id: number): ISetFavorite => ({
   payload: id,
 })
 
-export type Action = ISetFavorite
+export interface IGetData {
+  type: GET_DATA
+  payload: number[]
+}
+
+export const getData = (data: number[]) => ({
+  type: GET_DATA,
+  payload: data,
+})
+
+export type Action = ISetFavorite | IGetData

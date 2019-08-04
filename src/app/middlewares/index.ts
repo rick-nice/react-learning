@@ -1,1 +1,1 @@
-export { favoritesToLS } from './favoritesToLS'
+export { dataToLS } from './dataToLS'

@@ -1,11 +1,7 @@
-import { SET_FAVORITE } from './types'
+import { SET_FAVORITE, GET_DATA } from './types'
 import { Action } from './actions'
 
-const favorites = localStorage.getItem('favorites')
-
-const initialState: Set<number> = favorites
-  ? new Set(JSON.parse(favorites))
-  : new Set()
+const initialState: Set<number> = new Set()
 
 export default function favoriteReducer(
   state: Set<number> = initialState,
@@ -15,6 +11,8 @@ export default function favoriteReducer(
     case SET_FAVORITE:
       const newState = new Set(state)
       return newState.add(action.payload)
+    case GET_DATA:
+      return new Set(action.payload)
     default:
       return state
   }
