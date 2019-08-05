@@ -1,23 +1,28 @@
-import { SET_FAVORITE, GET_DATA } from './types'
+import { SET_FAVORITE, SET_FAVORITES } from './types'
+import { saveToLS } from '../actions'
+import { Dispatch } from 'redux'
 
 export interface ISetFavorite {
   type: SET_FAVORITE
   payload: number
 }
 
-export const setFavorite = (id: number): ISetFavorite => ({
-  type: SET_FAVORITE,
-  payload: id,
-})
+export const setFavorite = (id: number) => (dispatch: Dispatch) => {
+  dispatch({
+    type: SET_FAVORITE,
+    payload: id,
+  })
+  dispatch(saveToLS('favorites'))
+}
 
-export interface IGetData {
-  type: GET_DATA
+export interface ISetFavorites {
+  type: SET_FAVORITES
   payload: number[]
 }
 
-export const getData = (data: number[]) => ({
-  type: GET_DATA,
+export const setFavorites = (data: number[]) => ({
+  type: SET_FAVORITES,
   payload: data,
 })
 
-export type Action = ISetFavorite | IGetData
+export type Action = ISetFavorite | ISetFavorites

@@ -17,11 +17,9 @@ export const saveToLS = (key: string): ISaveToLS => ({
 export interface ILoadFromLS {
   type: LOAD_FROM_LS
   key: string
-  loadType: string
 }
 
-export const loadFromLS = (key: string, loadType: string): ILoadFromLS => ({
+export const loadFromLS = (key: string) => ({
   type: LOAD_FROM_LS,
-  loadType,
   key,
 })
