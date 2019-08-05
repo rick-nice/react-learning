@@ -7,10 +7,12 @@ const dataToLS: Middleware = ({ getState }: MiddlewareAPI) => (
 ) => (action) => {
   if (action.type === LOAD_FROM_LS) {
     const data = localStorage.getItem(action.key)
+
     if (data) {
       return JSON.parse(data)
     }
   }
+
   if (action.type === SAVE_TO_LS) {
     localStorage.setItem(
       action.key,

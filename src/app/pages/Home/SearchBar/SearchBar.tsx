@@ -23,13 +23,13 @@ const SearchBar = ({ getSearchedBeers }: ISearchProps) => {
   const [filterType, setFilterType] = useState('abv_gt')
   const [filterValue, setFilterValue] = useState(0)
 
-  const onSearchClick = (e: FormEvent) => {
+  const onSubmitSearchedBeer = (e: FormEvent) => {
     e.preventDefault()
     getSearchedBeers(name, filterType, filterValue)
   }
 
   return (
-    <Form layout='inline' onSubmit={onSearchClick}>
+    <Form layout='inline' onSubmit={onSubmitSearchedBeer}>
       <Form.Item>
         <Input
           placeholder='input beer name'
