@@ -10,10 +10,9 @@ const { Header } = Layout
 interface IProps {
   loadFromLS: (key: string) => any
   setFavorites: (favorites: number[]) => void
-  favorites: Set<number>
 }
 
-const AppPure = ({ setFavorites, loadFromLS, favorites }: IProps) => {
+const AppPure = ({ setFavorites, loadFromLS }: IProps) => {
   useEffect(() => {
     const data: number[] = loadFromLS('favorites')
 
