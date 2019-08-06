@@ -1,15 +1,18 @@
-import { SET_FAVORITE } from './types'
+import { SET_FAVORITE, SET_FAVORITES } from './types'
 import { Action } from './actions'
 
-const initialState: number[] = []
+const initialState: Set<number> = new Set()
 
 export default function favoriteReducer(
-  state: number[] = initialState,
+  state: Set<number> = initialState,
   action: Action
-): number[] {
+): Set<number> {
   switch (action.type) {
     case SET_FAVORITE:
-      return [...state, action.payload]
+      const newState = new Set(state)
+      return newState.add(action.payload)
+    case SET_FAVORITES:
+      return new Set(action.payload)
     default:
       return state
   }

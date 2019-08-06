@@ -1,0 +1,1 @@
+export { dataToLS } from './dataToLS'

@@ -1,9 +1,8 @@
-import React, { useState, ChangeEvent } from 'react'
-import { Input, Select, Button } from 'antd'
+import React, { useState, ChangeEvent, FormEvent } from 'react'
+import { Input, Select, Button, Form } from 'antd'
 
 import { OPTIONS, ABV_GREATER } from './constants'
 
-const { Group: InputGroup } = Input
 const { Option } = Select
 
 export interface ISearchProps {
@@ -14,54 +13,49 @@ export interface ISearchProps {
   ) => void
 }
 
-interface setIsListEmpty {
-  setIsListEmpty: (isEmpty: boolean) => void
-}
-
-const SearchBar = ({
-  getSearchedBeers,
-  setIsListEmpty,
-}: ISearchProps & setIsListEmpty) => {
+const SearchBar = ({ getSearchedBeers }: ISearchProps) => {
   const [name, setName] = useState('')
   const [filterType, setFilterType] = useState(ABV_GREATER.type)
   const [filterValue, setFilterValue] = useState(0)
 
-  const onSearchClick = () => {
+  const onSubmitSearchedBeer = (e: FormEvent) => {
+    e.preventDefault()
     getSearchedBeers(name, filterType, filterValue)
-    setIsListEmpty(false)
   }
 
   return (
-    <InputGroup compact>
-      <Input
-        style={{ width: '20%' }}
-        placeholder='input beer name'
-        onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
-      />
-      <Select
-        defaultValue={filterType}
-        onChange={(value: string) => setFilterType(value)}
-      >
-        {OPTIONS.map(({ type, title }, index) => (
-          <Option key={index} value={type}>
-            {title}
-          </Option>
-        ))}
-      </Select>
-      <Input
-        style={{ width: '10%' }}
-        onChange={(e: ChangeEvent<HTMLInputElement>) =>
-          setFilterValue(Number(e.target.value))
-        }
-      />
-
-      <Button
-        type='primary'
-        shape='circle'
-        icon='search'
-        onClick={onSearchClick}
-      />
-    </InputGroup>
+    <Form layout='inline' onSubmit={onSubmitSearchedBeer}>
+      <Form.Item>
+        <Input
+          placeholder='input beer name'
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            setName(e.target.value)
+          }
+        />
+      </Form.Item>
+      <Form.Item>
+        <Select
+          defaultValue={filterType}
+          onChange={(value: string) => setFilterType(value)}
+        >
+          {OPTIONS.map(({ type, title }, index) => (
+            <Option key={index} value={type}>
+              {title}
+            </Option>
+          ))}
+        </Select>
+      </Form.Item>
+      <Form.Item>
+        <Input
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            setFilterValue(Number(e.target.value))
+          }
+        />
+      </Form.Item>
+      <Form.Item>
+        <Button type='primary' shape='circle' icon='search' htmlType='submit' />
+      </Form.Item>
+    </Form>
   )
 }
 
