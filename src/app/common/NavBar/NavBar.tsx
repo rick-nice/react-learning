@@ -1,16 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Menu, Button } from 'antd'
+import { Menu } from 'antd'
 
 import './NavBar.css'
 
-interface IProps {
-  getRandomBeer: () => void
-}
-
-const NavBarPure = ({ getRandomBeer }: IProps) => {
-  const onBtnClick = () => getRandomBeer()
-
+const NavBar = () => {
   return (
     <div>
       <div className='logo'>
@@ -18,11 +12,11 @@ const NavBarPure = ({ getRandomBeer }: IProps) => {
       </div>
       <Menu theme='dark' mode='horizontal' style={{ lineHeight: '64px' }}>
         <Menu.Item>
-          <Button onClick={onBtnClick}>Random</Button>
+          <Link to='/beer/:random'>Random</Link>
         </Menu.Item>
       </Menu>
     </div>
   )
 }
 
-export default NavBarPure
+export default NavBar

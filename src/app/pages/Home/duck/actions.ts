@@ -12,7 +12,14 @@ export interface IFailureReceiveBeers {
   error: boolean
 }
 
-export type BeerAction = ISuccessReceiveBeers | IFailureReceiveBeers
+export interface ISelectBeer {
+  type: types.SELECT_BEER
+}
+
+export type BeerAction =
+  | ISuccessReceiveBeers
+  | IFailureReceiveBeers
+  | ISelectBeer
 
 export const successReceiveBeers = (beers: IBeer[]): ISuccessReceiveBeers => ({
   type: types.RECEIVE_BEER_SUCCESS,
@@ -23,4 +30,8 @@ export const failureReceiveBeers = (err: object): IFailureReceiveBeers => ({
   type: types.RECEIVE_BEER_FAILURE,
   payload: err,
   error: true,
+})
+
+export const selectBeer = () => ({
+  type: types.SELECT_BEER,
 })

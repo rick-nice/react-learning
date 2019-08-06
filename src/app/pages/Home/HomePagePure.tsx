@@ -13,7 +13,7 @@ type HomeProps = IBeerListProps & ISearchProps
 const HomePage = ({ beers, setFavorite, getSearchedBeers }: HomeProps) => {
   const [isListEmpty, setIsListEmpty] = useState(true)
   return (
-    <Content>
+    <Content style={{ padding: '0 50px', marginTop: 64 }}>
       <SearchBar
         getSearchedBeers={getSearchedBeers}
         setIsListEmpty={setIsListEmpty}

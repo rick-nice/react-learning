@@ -1,20 +1,28 @@
-import { ThunkAction, ThunkDispatch } from 'redux-thunk'
+import { ThunkAction } from 'redux-thunk'
 import { AnyAction } from 'redux'
 
-import { successReceiveBeers, failureReceiveBeers } from './actions'
+import { IStoreState } from '../../../reducers'
+import { successReceiveBeers, failureReceiveBeers, selectBeer } from './actions'
+import { IBeer } from '../../../types'
 
 const URL = 'https://api.punkapi.com/v2/beers'
 
-export function getRandomBeer(): ThunkAction<Promise<void>, {}, {}, AnyAction> {
-  return async (dispatch: ThunkDispatch<{}, {}, AnyAction>): Promise<void> => {
-    try {
-      const response = await fetch(`${URL}/random`)
-      const beers = await response.json()
+export type ThunkResult<R> = ThunkAction<R, IStoreState, null, AnyAction>
 
-      dispatch(successReceiveBeers(beers))
-    } catch (err) {
-      dispatch(failureReceiveBeers(err))
+export function getCurrentBeer(id: string): ThunkResult<Promise<IBeer>> {
+  return async (dispatch, getState) => {
+    let beers = getState().beers.list
+    const selectedBeer = beers.find((beer) => beer.id === Number(id))
+
+    if (id === 'random' || !selectedBeer) {
+      const response = await fetch(`${URL}/${id}`)
+      beers = await response.json()
+      dispatch(selectBeer)
+      return beers[0]
     }
+
+    dispatch(selectBeer)
+    return selectedBeer!
   }
 }
 
@@ -22,8 +30,8 @@ export function getSearchedBeers(
   name: string,
   filterType: string,
   filterValue: number
-): ThunkAction<Promise<void>, {}, {}, AnyAction> {
-  return async (dispatch: ThunkDispatch<{}, {}, AnyAction>): Promise<void> => {
+): ThunkResult<Promise<void>> {
+  return async (dispatch) => {
     try {
       const response = await fetch(
         `${URL}/?beer_name=${name}&${filterType}=${filterValue}`
@@ -39,8 +47,8 @@ export function getSearchedBeers(
 
 export function getFavoriteBeers(
   favoriteIds: number[]
-): ThunkAction<Promise<void>, {}, {}, AnyAction> {
-  return async (dispatch: ThunkDispatch<{}, {}, AnyAction>): Promise<void> => {
+): ThunkResult<Promise<void>> {
+  return async (dispatch) => {
     try {
       const response = await fetch(`${URL}/ids=${favoriteIds.join('|')}`)
       const beers = await response.json()
