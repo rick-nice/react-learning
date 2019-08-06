@@ -13,7 +13,14 @@ export interface ISearchProps {
   ) => void
 }
 
-const SearchBar = ({ getSearchedBeers }: ISearchProps) => {
+interface ISetIsListEmpty {
+  setIsListEmpty: (isEmpty: boolean) => void
+}
+
+const SearchBar = ({
+  getSearchedBeers,
+  setIsListEmpty,
+}: ISearchProps & ISetIsListEmpty) => {
   const [name, setName] = useState('')
   const [filterType, setFilterType] = useState(ABV_GREATER.type)
   const [filterValue, setFilterValue] = useState(0)
@@ -21,6 +28,7 @@ const SearchBar = ({ getSearchedBeers }: ISearchProps) => {
   const onSubmitSearchedBeer = (e: FormEvent) => {
     e.preventDefault()
     getSearchedBeers(name, filterType, filterValue)
+    setIsListEmpty(false)
   }
 
   return (
