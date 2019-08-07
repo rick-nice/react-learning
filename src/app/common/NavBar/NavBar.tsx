@@ -12,7 +12,7 @@ const NavBar = () => {
       </div>
       <Menu theme='dark' mode='horizontal' style={{ lineHeight: '64px' }}>
         <Menu.Item>
-          <Link to='/beer/:random'>Random</Link>
+          <Link to='/beer/random'>Random</Link>
         </Menu.Item>
       </Menu>
     </div>

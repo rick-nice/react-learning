@@ -1,11 +1,14 @@
 import { connect } from 'react-redux'
 
 import BeerPage from './BeerPagePure'
-import { getCurrentBeer } from '../Home/duck/operations'
+import { selectBeer } from '../Home/duck/operations'
+import { IStoreState } from '../../reducers'
 
-const mapDispatchToProps = { getCurrentBeer }
+const mapDispatchToProps = { selectBeer }
+
+const mapStateToProps = ({ beers: { selected } }: IStoreState) => ({ selected })
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(BeerPage)

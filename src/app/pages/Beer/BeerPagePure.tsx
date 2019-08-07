@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { RouteComponentProps } from 'react-router'
 import { Layout, List } from 'antd'
 
@@ -9,28 +9,22 @@ import defaultBeerImg from '../../common/BeerCard/images/beer.svg'
 const { Content } = Layout
 
 interface IProps extends RouteComponentProps<ITParams> {
-  getCurrentBeer: (id: string) => Promise<IBeer>
+  selectBeer: (id: string) => void
+  selected?: IBeer
 }
 interface ITParams {
   id: string
 }
 
-const BeerPagePure = ({ match, getCurrentBeer }: IProps) => {
-  const id = match.params.id.substr(1)
-  const [selectedBeer, setSelectedBeer] = useState<IBeer>()
+const BeerPagePure = ({ match: { params }, selected, selectBeer }: IProps) => {
+  const { id } = params
 
   useEffect(() => {
-    async function fetchMyAPI() {
-      const result = await getCurrentBeer(id)
+    selectBeer(id)
+  }, [id, selectBeer])
 
-      setSelectedBeer(result)
-    }
-
-    fetchMyAPI()
-  }, [id, getCurrentBeer])
-
-  if (selectedBeer) {
-    const { image_url: img, food_pairing, ...others } = selectedBeer!
+  if (selected) {
+    const { image_url: img, food_pairing: food, ...others } = selected
     return (
       <Content style={{ padding: '0 50px', marginTop: 64 }}>
         <div className='beer-information'>
@@ -42,7 +36,7 @@ const BeerPagePure = ({ match, getCurrentBeer }: IProps) => {
           <BeerInformation {...others} />
         </div>
         <List>
-          {food_pairing.map((elem, index) => (
+          {food.map((elem, index) => (
             <List.Item key={index}>{elem}</List.Item>
           ))}
         </List>

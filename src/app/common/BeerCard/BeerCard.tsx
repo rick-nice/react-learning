@@ -26,7 +26,7 @@ const BeerCard = ({
     setFavorite(id)
   }
 
-  const handleOnCardClick = (e: MouseEvent) => {
+  const handleCardClick = (e: MouseEvent) => {
     onCardClick(id)
   }
 
@@ -41,7 +41,7 @@ const BeerCard = ({
         />
       }
       actions={[<Icon key={1} type='heart' onClick={onFavoriteClick} />]}
-      onClick={handleOnCardClick}
+      onClick={handleCardClick}
     >
       <Meta title={name} description={description} />
     </Card>
