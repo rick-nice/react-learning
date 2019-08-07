@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Layout } from 'antd'
 
 import { IBeerListProps } from '../../common/BeerList/BeerList'
@@ -11,14 +11,10 @@ const { Content } = Layout
 type HomeProps = IBeerListProps & ISearchProps
 
 const HomePage = ({ beers, setFavorite, getSearchedBeers }: HomeProps) => {
-  const [isListEmpty, setIsListEmpty] = useState(true)
   return (
     <Content style={{ padding: '0 50px', marginTop: 64 }}>
-      <SearchBar
-        getSearchedBeers={getSearchedBeers}
-        setIsListEmpty={setIsListEmpty}
-      />
-      {!isListEmpty && <BeerList beers={beers} setFavorite={setFavorite} />}
+      <SearchBar getSearchedBeers={getSearchedBeers} />
+      <BeerList beers={beers} setFavorite={setFavorite} />
     </Content>
   )
 }

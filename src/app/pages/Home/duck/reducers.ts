@@ -4,10 +4,11 @@ import { BeerAction } from './actions'
 
 export interface IBeerState {
   list: IBeer[]
+  isFetching: boolean
   selected?: IBeer
 }
 
-const initialState = { list: [] }
+const initialState = { list: [], isFetching: false }
 
 export function beerReducer(
   state: IBeerState = initialState,
@@ -15,9 +16,11 @@ export function beerReducer(
 ): IBeerState {
   switch (action.type) {
     case types.RECEIVE_BEER_SUCCESS:
-      return { ...state, list: action.payload }
+      return { ...state, list: action.payload, isFetching: false }
     case types.SET_SELECTED_BEER:
       return { ...state, selected: action.payload }
+    case types.REQUEST_BEER:
+      return { ...state, isFetching: true }
     default:
       return state
   }

@@ -13,6 +13,7 @@ export interface IBeerListProps extends RouteComponentProps {
 
 interface IList {
   list: IBeerShort[]
+  isFetching: boolean
 }
 
 const GRID: ListGridType = {
@@ -25,13 +26,18 @@ const GRID: ListGridType = {
   xxl: 3,
 }
 
-const BeerList = ({ beers, setFavorite, history }: IBeerListProps) => {
+const BeerList = ({
+  beers: { list, isFetching },
+  setFavorite,
+  history,
+}: IBeerListProps) => {
   const onCardClick = (id: number) => history.push(`/beer/${id}`)
 
   return (
     <List
       grid={GRID}
-      dataSource={beers.list}
+      dataSource={list}
+      loading={isFetching}
       renderItem={({ description, id, name, image_url: img }: IBeerShort) => (
         <List.Item key={id}>
           <BeerCard
