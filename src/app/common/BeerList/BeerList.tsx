@@ -4,11 +4,25 @@ import { ListGridType } from 'antd/lib/list'
 import { withRouter, RouteComponentProps } from 'react-router'
 
 import { IBeerShort } from '../../types'
-import BeerCard from '../BeerCard'
 
 export interface IBeerListProps extends RouteComponentProps {
   beers: IList
   setFavorite: (id: number) => void
+}
+
+type RenderProp = (arg: IRenderPropArg) => React.ReactElement<any>
+
+export interface IRenderPropArg {
+  id: number
+  name: string
+  description: string
+  img: string
+  setFavorite: (id: number) => void
+  onCardClick: (id: number) => void
+}
+
+interface IChildren {
+  children: RenderProp
 }
 
 interface IList {
@@ -30,7 +44,8 @@ const BeerList = ({
   beers: { list, isFetching },
   setFavorite,
   history,
-}: IBeerListProps) => {
+  children,
+}: IBeerListProps & IChildren) => {
   const onCardClick = (id: number) => history.push(`/beer/${id}`)
 
   return (
@@ -40,14 +55,7 @@ const BeerList = ({
       loading={isFetching}
       renderItem={({ description, id, name, image_url: img }: IBeerShort) => (
         <List.Item key={id}>
-          <BeerCard
-            description={description}
-            name={name}
-            img={img}
-            setFavorite={setFavorite}
-            id={id}
-            onCardClick={onCardClick}
-          />
+          {children({ id, name, description, img, setFavorite, onCardClick })}
         </List.Item>
       )}
     />
