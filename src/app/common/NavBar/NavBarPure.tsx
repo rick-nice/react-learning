@@ -9,7 +9,7 @@ interface IProps {
 }
 
 const NavBarPure = ({ getRandomBeer }: IProps) => {
-  const onBtnClick = () => getRandomBeer()
+  const onRandomClick = () => getRandomBeer()
 
   return (
     <div>
@@ -18,7 +18,7 @@ const NavBarPure = ({ getRandomBeer }: IProps) => {
       </div>
       <Menu theme='dark' mode='horizontal' style={{ lineHeight: '64px' }}>
         <Menu.Item>
-          <Button onClick={onBtnClick}>Random</Button>
+          <Button onClick={onRandomClick}>Random</Button>
         </Menu.Item>
       </Menu>
     </div>

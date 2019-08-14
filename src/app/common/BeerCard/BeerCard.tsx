@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { MouseEvent } from 'react'
 import { Card, Icon } from 'antd'
 
 import defaultBeerImg from './images/beer.svg'
@@ -11,11 +11,23 @@ interface IProps {
   name: string
   description: string
   setFavorite: (id: number) => void
+  onCardClick: (id: number) => void
 }
 
-const BeerCard = ({ id, img, name, description, setFavorite }: IProps) => {
+const BeerCard = ({
+  id,
+  img,
+  name,
+  description,
+  setFavorite,
+  onCardClick,
+}: IProps) => {
   const onFavoriteClick = () => {
     setFavorite(id)
+  }
+
+  const handleCardClick = (e: MouseEvent) => {
+    onCardClick(id)
   }
 
   return (
@@ -29,6 +41,7 @@ const BeerCard = ({ id, img, name, description, setFavorite }: IProps) => {
         />
       }
       actions={[<Icon key={1} type='heart' onClick={onFavoriteClick} />]}
+      onClick={handleCardClick}
     >
       <Meta title={name} description={description} />
     </Card>
