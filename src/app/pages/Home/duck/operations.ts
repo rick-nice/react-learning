@@ -1,6 +1,7 @@
 import { ThunkAction } from 'redux-thunk'
 import { AnyAction } from 'redux'
 
+import { fetchAndDispatch } from '../../../utils'
 import { IStoreState } from '../../../reducers'
 import {
   requestBeer,
@@ -9,9 +10,13 @@ import {
   setSelectedBeer,
 } from './actions'
 
-const URL = 'https://api.punkapi.com/v2/beers'
+type ThunkResult<R> = ThunkAction<R, IStoreState, null, AnyAction>
 
-export type ThunkResult<R> = ThunkAction<R, IStoreState, null, AnyAction>
+const fetchAndDispatchBeer = fetchAndDispatch(
+  requestBeer,
+  successReceiveBeers,
+  failureReceiveBeers
+)
 
 export function selectBeer(id: string): ThunkResult<Promise<void>> {
   return async (dispatch, getState) => {
@@ -29,52 +34,27 @@ export function selectBeer(id: string): ThunkResult<Promise<void>> {
   }
 }
 
-export function getRandomBeer(): ThunkResult<Promise<void>> {
-  return async (dispatch) => {
-    try {
-      dispatch(requestBeer())
-      const response = await fetch(`${URL}/random`)
-      const beers = await response.json()
-
-      dispatch(successReceiveBeers(beers))
-    } catch (err) {
-      dispatch(failureReceiveBeers(err))
-    }
+export function loadRandomBeer(): ThunkResult<void> {
+  return (dispatch) => {
+    fetchAndDispatchBeer(dispatch, '/random')
   }
 }
 
-export function getSearchedBeers(
+export function loadSearchedBeers(
   name: string,
   filterType: string,
   filterValue: number
-): ThunkResult<Promise<void>> {
-  return async (dispatch) => {
-    try {
-      dispatch(requestBeer())
-      const response = await fetch(
-        `${URL}/?beer_name=${name}&${filterType}=${filterValue}`
-      )
-      const beers = await response.json()
-
-      dispatch(successReceiveBeers(beers))
-    } catch (err) {
-      dispatch(failureReceiveBeers(err))
-    }
+): ThunkResult<void> {
+  return (dispatch) => {
+    fetchAndDispatchBeer(
+      dispatch,
+      `?beer_name=${name}&${filterType}=${filterValue}`
+    )
   }
 }
 
-export function getFavoriteBeers(
-  favoriteIds: number[]
-): ThunkResult<Promise<void>> {
-  return async (dispatch) => {
-    try {
-      dispatch(requestBeer)
-      const response = await fetch(`${URL}/ids=${favoriteIds.join('|')}`)
-      const beers = await response.json()
-
-      dispatch(successReceiveBeers(beers))
-    } catch (err) {
-      dispatch(failureReceiveBeers(err))
-    }
+export function loadFavoriteBeers(favoriteIds: number[]): ThunkResult<void> {
+  return (dispatch) => {
+    fetchAndDispatchBeer(dispatch, `?ids=${favoriteIds.join('|')}`)
   }
 }
