@@ -1,13 +1,13 @@
 import { connect } from 'react-redux'
 
 import HomePage from './HomePagePure'
-import { setFavorite } from '../../duck/actions'
-import { getSearchedBeers } from './duck/operations'
+import { toggleFavorite } from '../Favorites/duck/operations'
+import { loadSearchedBeers } from './duck/operations'
 import { IStoreState } from '../../reducers'
 
 const mapStateToProps = ({ beers }: IStoreState) => ({ beers })
 
-const mapDispatchToProps = { setFavorite, getSearchedBeers }
+const mapDispatchToProps = { toggleFavorite, loadSearchedBeers }
 
 export default connect(
   mapStateToProps,

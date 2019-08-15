@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { Layout } from 'antd'
 
 import { NavBar } from './common'
-import { Beer, Home } from './pages'
+import { Beer, Home, Favorites } from './pages'
 
 const { Header } = Layout
 
@@ -27,6 +27,7 @@ const AppPure = ({ setFavorites, loadFromLS }: IProps) => {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route path='/beer/:id' component={Beer} />
+          <Route path='/favorites' component={Favorites} />
         </Switch>
       </Layout>
     </Router>

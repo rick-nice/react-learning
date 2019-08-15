@@ -5,11 +5,11 @@ import { Menu, Button } from 'antd'
 import './NavBar.css'
 
 interface IProps {
-  getRandomBeer: () => void
+  loadRandomBeer: () => void
 }
 
-const NavBarPure = ({ getRandomBeer }: IProps) => {
-  const onRandomClick = () => getRandomBeer()
+const NavBarPure = ({ loadRandomBeer }: IProps) => {
+  const onRandomClick = () => loadRandomBeer()
 
   return (
     <div>
@@ -19,6 +19,9 @@ const NavBarPure = ({ getRandomBeer }: IProps) => {
       <Menu theme='dark' mode='horizontal' style={{ lineHeight: '64px' }}>
         <Menu.Item>
           <Button onClick={onRandomClick}>Random</Button>
+        </Menu.Item>
+        <Menu.Item>
+          <Link to='/favorites'>Favorites</Link>
         </Menu.Item>
       </Menu>
     </div>

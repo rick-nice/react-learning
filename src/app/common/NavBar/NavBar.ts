@@ -1,9 +1,9 @@
 import { connect } from 'react-redux'
 
 import Navbar from './NavBarPure'
-import { getRandomBeer } from '../../pages/Home/duck/operations'
+import { loadRandomBeer } from '../../pages/Home/duck/operations'
 
-const mapDispatchToProps = { getRandomBeer }
+const mapDispatchToProps = { loadRandomBeer }
 
 export default connect(
   null,
