@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 
 import App from './AppPure'
 import { loadFromLS } from './actions'
-import { setFavorites } from './duck/actions'
+import { setFavorites } from './pages/Favorites/duck/actions'
 
 const mapDispatchToProps = { loadFromLS, setFavorites }
 
