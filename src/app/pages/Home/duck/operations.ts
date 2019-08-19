@@ -36,7 +36,7 @@ export function selectBeer(id: string): ThunkResult<Promise<void>> {
 
 export function loadRandomBeer(): ThunkResult<void> {
   return (dispatch) => {
-    fetchAndDispatchBeer(dispatch, '/random')
+    return fetchAndDispatchBeer(dispatch, '/random')
   }
 }
 
