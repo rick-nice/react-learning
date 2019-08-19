@@ -12,7 +12,6 @@ describe('beer reducer', () => {
     expect(beerReducer(initialState, action)).toEqual({
       ...initialState,
       isFetching: true,
-      list: [],
     })
   })
 
