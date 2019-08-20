@@ -3,6 +3,8 @@ import { Card, Icon } from 'antd'
 
 import defaultBeerImg from './images/beer.svg'
 
+import './BeerCard.css'
+
 const { Meta } = Card
 
 export interface ICardProps {
@@ -32,12 +34,12 @@ const BeerCard = ({
 
   return (
     <Card
-      style={{ width: 300, height: 450 }}
       cover={
         <img
+          className='beer-card-img'
           alt='beerImg'
           src={img || defaultBeerImg}
-          style={{ width: 200, height: 400 }}
+          style={{ width: 200 }}
         />
       }
       actions={[
