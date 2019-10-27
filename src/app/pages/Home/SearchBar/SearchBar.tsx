@@ -6,21 +6,17 @@ import { OPTIONS, ABV_GREATER } from './constants'
 const { Option } = Select
 
 export interface ISearchProps {
-  loadSearchedBeers: (
-    name: string,
-    filterType: string,
-    filterValue: number
-  ) => void
+  requestBeer: (url: string) => void
 }
 
-const SearchBar = ({ loadSearchedBeers }: ISearchProps) => {
+const SearchBar = ({ requestBeer }: ISearchProps) => {
   const [name, setName] = useState('')
   const [filterType, setFilterType] = useState(ABV_GREATER.type)
   const [filterValue, setFilterValue] = useState(0)
 
   const onSubmitSearchedBeer = (e: FormEvent) => {
     e.preventDefault()
-    loadSearchedBeers(name, filterType, filterValue)
+    requestBeer(`?beer_name=${name}&${filterType}=${filterValue}`)
   }
 
   return (
@@ -38,8 +34,8 @@ const SearchBar = ({ loadSearchedBeers }: ISearchProps) => {
           defaultValue={filterType}
           onChange={(value: string) => setFilterType(value)}
         >
-          {OPTIONS.map(({ type, title }, index) => (
-            <Option key={index} value={type}>
+          {OPTIONS.map(({ type, title }) => (
+            <Option key={type} value={type}>
               {title}
             </Option>
           ))}

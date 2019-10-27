@@ -1,1 +1,0 @@
-export { dataToLS } from './dataToLS'

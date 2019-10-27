@@ -11,7 +11,7 @@ export interface IBeerListProps extends RouteComponentProps {
   toggleFavorite: (id: number) => void
 }
 
-type RenderProp = (arg: ICardProps) => React.ReactElement<any>
+type RenderProp = (arg: ICardProps) => React.ReactElement<ICardProps>
 
 interface IChildren {
   children: RenderProp

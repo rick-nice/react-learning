@@ -1,8 +1,5 @@
 import * as types from './types'
 import favoriteReducer from './reducers'
-import { setFavorites } from './actions'
-import { toggleFavorite } from './operations'
+import favoriteSaga from './sagas'
 
-const actions = { setFavorites, toggleFavorite }
-
-export { types, favoriteReducer, actions }
+export { types, favoriteReducer, favoriteSaga }

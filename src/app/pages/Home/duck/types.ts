@@ -7,5 +7,8 @@ export type RECEIVE_BEER_FAILURE = typeof RECEIVE_BEER_FAILURE
 export const REQUEST_BEER = 'REQUEST_BEER'
 export type REQUEST_BEER = typeof REQUEST_BEER
 
+export const SELECT_BEER = 'SELECT_BEER'
+export type SELECT_BEER = typeof SELECT_BEER
+
 export const SET_SELECTED_BEER = 'SET_SELECTED_BEER'
 export type SET_SELECTED_BEER = typeof SET_SELECTED_BEER

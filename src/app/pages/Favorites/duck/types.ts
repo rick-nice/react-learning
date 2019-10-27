@@ -7,5 +7,8 @@ export type SET_FAVORITES = typeof SET_FAVORITES
 export const UNSET_FAVORITE = 'UNSET_FAVORITE'
 export type UNSET_FAVORITE = typeof UNSET_FAVORITE
 
+export const TOGGLE_FAVORITE = 'TOGGLE_FAVORITE'
+export type TOGGLE_FAVORITE = typeof TOGGLE_FAVORITE
+
 export const GET_DATA = 'GET_DATA'
 export type GET_DATA = typeof GET_DATA

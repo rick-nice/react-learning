@@ -21,6 +21,8 @@ export function beerReducer(
       return { ...state, selected: action.payload }
     case types.REQUEST_BEER:
       return { ...state, isFetching: true }
+    case types.SELECT_BEER:
+      return { ...state, isFetching: true }
     default:
       return state
   }

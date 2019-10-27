@@ -1,4 +1,4 @@
-import React, { MouseEvent } from 'react'
+import React from 'react'
 import { Card } from 'antd'
 
 const { Meta } = Card
@@ -11,7 +11,7 @@ interface IProps {
 }
 
 const BeerCardSmall = ({ id, name, description, onCardClick }: IProps) => {
-  const handleCardClick = (e: MouseEvent) => {
+  const handleCardClick = () => {
     onCardClick(id)
   }
 
@@ -19,7 +19,7 @@ const BeerCardSmall = ({ id, name, description, onCardClick }: IProps) => {
     <Card
       style={{ width: 300, height: 350 }}
       onClick={handleCardClick}
-      hoverable={true}
+      hoverable
     >
       <Meta title={name} description={description} />
     </Card>

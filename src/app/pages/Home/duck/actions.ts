@@ -19,6 +19,12 @@ export interface ISetSelectedBeer {
 
 export interface IRequestBeer {
   type: types.REQUEST_BEER
+  payload: string
+}
+
+export interface ISelectBeer {
+  type: types.SELECT_BEER
+  payload: string
 }
 
 export type BeerAction =
@@ -26,6 +32,7 @@ export type BeerAction =
   | IFailureReceiveBeers
   | ISetSelectedBeer
   | IRequestBeer
+  | ISelectBeer
 
 export const successReceiveBeers = (beers: IBeer[]): ISuccessReceiveBeers => ({
   type: types.RECEIVE_BEER_SUCCESS,
@@ -43,6 +50,12 @@ export const setSelectedBeer = (beer: IBeer): ISetSelectedBeer => ({
   payload: beer,
 })
 
-export const requestBeer = (): IRequestBeer => ({
+export const requestBeer = (url: string): IRequestBeer => ({
   type: types.REQUEST_BEER,
+  payload: url,
+})
+
+export const selectBeer = (id: string): ISelectBeer => ({
+  type: types.SELECT_BEER,
+  payload: id,
 })

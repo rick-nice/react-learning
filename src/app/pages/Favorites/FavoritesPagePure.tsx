@@ -8,7 +8,7 @@ import { ICardProps } from '../../common/BeerCard/BeerCard'
 const { Content } = Layout
 
 interface IDispatchProps {
-  loadFavoriteBeers: (favoriteIds: number[]) => void
+  requestBeer: (url: string) => void
   toggleFavorite: (id: number) => void
 }
 
@@ -17,14 +17,14 @@ type IProps = IStoreState & IDispatchProps
 const FavoritesPagePure = ({
   favorites,
   beers,
-  loadFavoriteBeers,
+  requestBeer,
   toggleFavorite,
 }: IProps) => {
   const [isLoaded, setIsLoaded] = useState(false)
   useEffect(() => {
-    loadFavoriteBeers([...favorites])
+    requestBeer(`?ids=${[...favorites].join('|')}`)
     setIsLoaded(true)
-  }, [loadFavoriteBeers, favorites])
+  }, [requestBeer, favorites])
 
   if (isLoaded) {
     return (

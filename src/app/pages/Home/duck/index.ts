@@ -1,5 +1,5 @@
 import * as types from './types'
 import * as reducers from './reducers'
-import * as operations from './operations'
+import beerSaga from './sagas'
 
-export { types, reducers, operations }
+export { types, reducers, beerSaga }

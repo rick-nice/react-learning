@@ -36,8 +36,8 @@ const BeerPagePure = ({ match: { params }, selected, selectBeer }: IProps) => {
           <BeerInformation {...others} />
         </div>
         <List>
-          {food.map((elem, index) => (
-            <List.Item key={index}>{elem}</List.Item>
+          {food.map((elem) => (
+            <List.Item key={elem}>{elem}</List.Item>
           ))}
         </List>
       </Content>

@@ -37,4 +37,4 @@ const fetchAndDispatch = (
   }
 }
 
-export { fetchAndDispatch }
+export { fetchAndDispatch, URL }

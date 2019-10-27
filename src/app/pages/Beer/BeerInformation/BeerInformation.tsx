@@ -9,6 +9,7 @@ interface IProps {
   description: string
   abv: number
   ibu: number
+  // eslint-disable-next-line camelcase
   first_brewed: string
 }
 

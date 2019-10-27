@@ -5,11 +5,11 @@ import { Menu, Button } from 'antd'
 import './NavBar.css'
 
 interface IProps {
-  loadRandomBeer: () => void
+  requestBeer: (url: string) => void
 }
 
-const NavBarPure = ({ loadRandomBeer }: IProps) => {
-  const onRandomClick = () => loadRandomBeer()
+const NavBarPure = ({ requestBeer }: IProps) => {
+  const onRandomClick = () => requestBeer('/random')
 
   return (
     <div>

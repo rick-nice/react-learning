@@ -11,10 +11,10 @@ const { Content } = Layout
 
 type HomeProps = IBeerListProps & ISearchProps
 
-const HomePage = ({ beers, toggleFavorite, loadSearchedBeers }: HomeProps) => {
+const HomePage = ({ beers, toggleFavorite, requestBeer }: HomeProps) => {
   return (
     <Content style={{ padding: '0 50px', marginTop: 64 }}>
-      <SearchBar loadSearchedBeers={loadSearchedBeers} />
+      <SearchBar requestBeer={requestBeer} />
       <BeerList beers={beers} toggleFavorite={toggleFavorite}>
         {(arg: ICardProps) => <BeerCard {...arg} />}
       </BeerList>

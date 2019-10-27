@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 export interface IBeer extends IBeerShort {
   tagline: string
   first_brewed: string

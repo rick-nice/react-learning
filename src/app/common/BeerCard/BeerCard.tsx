@@ -1,4 +1,4 @@
-import React, { MouseEvent } from 'react'
+import React from 'react'
 import { Card, Icon } from 'antd'
 
 import defaultBeerImg from './images/beer.svg'
@@ -28,7 +28,7 @@ const BeerCard = ({
     toggleFavorite(id)
   }
 
-  const handleCardClick = (e: MouseEvent) => {
+  const handleCardClick = () => {
     onCardClick(id)
   }
 
