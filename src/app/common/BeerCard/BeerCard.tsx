@@ -3,14 +3,16 @@ import { Card, Icon } from 'antd'
 
 import defaultBeerImg from './images/beer.svg'
 
+import './BeerCard.css'
+
 const { Meta } = Card
 
-interface IProps {
+export interface ICardProps {
   id: number
   img?: string
   name: string
   description: string
-  setFavorite: (id: number) => void
+  toggleFavorite: (id: number) => void
   onCardClick: (id: number) => void
 }
 
@@ -19,11 +21,11 @@ const BeerCard = ({
   img,
   name,
   description,
-  setFavorite,
+  toggleFavorite,
   onCardClick,
-}: IProps) => {
+}: ICardProps) => {
   const onFavoriteClick = () => {
-    setFavorite(id)
+    toggleFavorite(id)
   }
 
   const handleCardClick = (e: MouseEvent) => {
@@ -32,16 +34,18 @@ const BeerCard = ({
 
   return (
     <Card
-      style={{ width: 300, height: 450 }}
       cover={
         <img
+          className='beer-card-img'
           alt='beerImg'
           src={img || defaultBeerImg}
-          style={{ width: 200, height: 400 }}
+          style={{ width: 200 }}
         />
       }
-      actions={[<Icon key={1} type='heart' onClick={onFavoriteClick} />]}
-      onClick={handleCardClick}
+      actions={[
+        <Icon key={1} type='heart' onClick={onFavoriteClick} />,
+        <Icon key={2} type='select' onClick={handleCardClick} />,
+      ]}
     >
       <Meta title={name} description={description} />
     </Card>

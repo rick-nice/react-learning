@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 
-import { favoriteReducer } from './duck'
+import { favoriteReducer } from './pages/Favorites/duck'
 import { reducers } from './pages/Home/duck'
 
 export interface IStoreState {

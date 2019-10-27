@@ -8,7 +8,7 @@ export interface IBeerState {
   selected?: IBeer
 }
 
-const initialState = { list: [], isFetching: false }
+export const initialState = { list: [], isFetching: false }
 
 export function beerReducer(
   state: IBeerState = initialState,
