@@ -6,7 +6,4 @@ import { setFavorites } from './pages/Favorites/duck/actions'
 
 const mapDispatchToProps = { loadFromLS, setFavorites }
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(App)
+export default connect(null, mapDispatchToProps)(App)

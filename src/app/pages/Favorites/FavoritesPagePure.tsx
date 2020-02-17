@@ -12,30 +12,28 @@ interface IDispatchProps {
   toggleFavorite: (id: number) => void
 }
 
-type IProps = IStoreState & IDispatchProps
+type Props = IStoreState & IDispatchProps
 
 const FavoritesPagePure = ({
   favorites,
   beers,
   requestBeer,
   toggleFavorite,
-}: IProps) => {
+}: Props) => {
   const [isLoaded, setIsLoaded] = useState(false)
+
   useEffect(() => {
     requestBeer(`?ids=${[...favorites].join('|')}`)
     setIsLoaded(true)
-  }, [requestBeer, favorites])
+  }, [favorites, requestBeer])
 
-  if (isLoaded) {
-    return (
-      <Content style={{ padding: '0 50px', marginTop: 64 }}>
-        <BeerList beers={beers} toggleFavorite={toggleFavorite}>
-          {(arg: ICardProps) => <BeerCard {...arg} />}
-        </BeerList>
-      </Content>
-    )
-  }
-  return (
+  return isLoaded ? (
+    <Content style={{ padding: '0 50px', marginTop: 64 }}>
+      <BeerList beers={beers} toggleFavorite={toggleFavorite}>
+        {(arg: ICardProps) => <BeerCard {...arg} />}
+      </BeerList>
+    </Content>
+  ) : (
     <Content style={{ padding: '0 50px', marginTop: 64 }}>loading...</Content>
   )
 }
